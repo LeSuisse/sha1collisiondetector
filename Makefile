@@ -48,3 +48,12 @@ sha1collisiondetector.o: main.c
 clean:
 	$(MAKE) -C sha1collisiondetection clean
 	-rm sha1collisiondetector*
+
+.PHONY: test
+test: sha1collisiondetector
+	./sha1collisiondetector tests/shattered-1.pdf; test $$? = 3
+	./sha1collisiondetector tests/shattered-2.pdf; test $$? = 3
+	cat tests/shattered-1.pdf | ./sha1collisiondetector; test $$? = 3
+	./sha1collisiondetector tests/non-shattered.pdf; test $$? = 0
+	cat tests/non-shattered.pdf | ./sha1collisiondetector; test $$? = 0
+	./sha1collisiondetector tests/does-not-exist.pdf; test $$? = 1
