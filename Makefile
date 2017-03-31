@@ -7,7 +7,7 @@
 
 CC ?= gcc
 
-CFLAGS=-O2 -Wall -Werror -Wextra -pedantic -fstack-protector -fPIE -pie
+CFLAGS=-O2 -Wall -Werror -Wextra -pedantic -fstack-protector -fPIE -pie -Wl,-z,relro,-z,now
 
 sha1collisiondetector: main.c sha1collisiondetection/lib/sha1.c sha1collisiondetection/lib/ubc_check.c
 	$(CC) $(CFLAGS) -o $@ $^
