@@ -14,7 +14,7 @@ sha1collisiondetector: main.c sha1collisiondetection/lib/sha1.c sha1collisiondet
 
 .PHONY: clean
 clean:
-	-rm sha1collisiondetector*
+	-rm sha1collisiondetector
 
 .PHONY: test
 test: sha1collisiondetector
